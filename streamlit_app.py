@@ -42,7 +42,6 @@ def initialize_rag_system():
     # Load CSV
     try:
         df = pd.read_csv("AIIB_Projects.csv", sep='\t')
-        st.sidebar.success(f"✅ Loaded {len(df)} projects")
     except FileNotFoundError:
         st.error("❌ AIIB_Projects.csv not found. Please upload the file to the same directory.")
         st.stop()
@@ -67,7 +66,7 @@ def initialize_rag_system():
     
     # Initialize Gemini LLM
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",  # Using latest available model
+        model="gemini-2.5-flash",
         google_api_key=api_key,
         temperature=0.3
     )
@@ -75,7 +74,7 @@ def initialize_rag_system():
     # Create prompt template
     template = """You are an AI assistant with knowledge of AIIB projects and global context. 
 Use the following pieces of retrieved CSV data to answer the question. 
-You may also use general knowledge if requires more information. Provide a cohesive answer overall.
+You may also use general knowledge too add more details. Provide a cohesive answer overall.
 
 Context:
 {context}
