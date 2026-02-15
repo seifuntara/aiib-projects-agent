@@ -117,7 +117,6 @@ st.markdown("---")
 # UI - CHATBOT
 # ============================================================================
 st.subheader("💬 AI Assistant")
-st.markdown(f"Powered by **LangChain + FAISS + Gemini**")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -135,16 +134,19 @@ if len(st.session_state.messages) == 0:
     col1, col2 = st.columns(2)
     
     with col1:
+        if st.button("What are the largest transport infrastructure projects", use_container_width=True):
+            st.session_state.example_query = "What are the largest transport infrastructure projects"
+
+        if st.button("What renewable energy projects are in Indonesia", use_container_width=True):
+            st.session_state.example_query = "What renewable energy projects are in Indonesia"
+
+    with col2:
         if st.button("Explain flooding-related projects in Bengal", use_container_width=True):
             st.session_state.example_query = "Explain flooding-related projects in Bengal"
-        if st.button("What renewable energy projects are in India?", use_container_width=True):
-            st.session_state.example_query = "What renewable energy projects are in India?"
-    
-    with col2:
-        if st.button("What are the largest transport infrastructure projects?", use_container_width=True):
-            st.session_state.example_query = "What are the largest transport infrastructure projects?"
-        if st.button("Tell me about climate-focused projects in Asia", use_container_width=True):
-            st.session_state.example_query = "Tell me about climate-focused projects in Asia"
+
+        if st.button("Show non-sovereign projects in India in 2024", use_container_width=True):
+            st.session_state.example_query = "Show non-sovereign projects in India in 2024"
+
 
 # Handle example query clicks
 if "example_query" in st.session_state:
@@ -195,16 +197,20 @@ if prompt := st.chat_input("Ask about AIIB projects..."):
 with st.sidebar:
     st.markdown("### ℹ️ About")
     st.markdown("""
-    This dashboard uses **Retrieval-Augmented Generation (RAG)** to answer questions about AIIB projects.
+    This dashboard uses **Retrieval-Augmented Generation (RAG)** to answer questions about projects financed by the **Asian Infrastructure Investment Bank (AIIB)**.
     
     **Tech Stack:**
     - 🔍 **FAISS** - Vector search
     - 🤖 **HuggingFace** - Embeddings
-    - ✨ **Gemini 2.0 Flash** - LLM
+    - ✨ **Gemini 2.5 Flash** - LLM
     - 🔗 **LangChain** - Orchestration
     """)
 
     st.markdown("---")
     st.markdown("### 📁 Data Source")
     st.markdown(f"**Projects loaded:** {num_projects}")
-    st.markdown("**Last updated:** 15/02/2026")
+    st.markdown("**Last updated:** 15 Feb 2026")
+    st.caption(
+        "Data sourced from publicly available AIIB project disclosures. "
+        "[Learn more about AIIB](https://www.aiib.org)."
+    )
