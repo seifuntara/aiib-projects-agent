@@ -122,25 +122,24 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Example questions (show when no messages yet)
-if len(st.session_state.messages) == 0:
-    st.markdown("**💡 Try asking:**")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("What renewable energy projects has AIIB approved in Indonesia?", use_container_width=True):
-            st.session_state.example_query = "What renewable energy projects has AIIB approved in Indonesia?"
+# Example questions
+st.markdown("**💡 Try asking:**")
 
-        if st.button("Show infrastructure projects approved by AIIB in 2021 in India.", use_container_width=True):
-            st.session_state.example_query = "Show infrastructure projects approved by AIIB in 2021 in India"
+col1, col2 = st.columns(2)
 
-    with col2:
-        if st.button("List non-sovereign projects in Bangladesh related to transport.", use_container_width=True):
-            st.session_state.example_query = "List non-sovereign projects in Bangladesh related to transport"
+with col1:
+    if st.button("What renewable energy projects has AIIB approved in Indonesia?", use_container_width=True):
+        st.session_state.example_query = "What renewable energy projects has AIIB approved in Indonesia?"
 
-        if st.button("Example AIIB projects related to internet connectivity", use_container_width=True):
-            st.session_state.example_query = "Example AIIB projects related to internet connectivity"
+    if st.button("Show infrastructure projects approved by AIIB in 2021 in India", use_container_width=True):
+        st.session_state.example_query = "Show infrastructure projects approved by AIIB in 2021 in India"
+
+with col2:
+    if st.button("List non-sovereign projects in Bangladesh related to transport", use_container_width=True):
+        st.session_state.example_query = "List non-sovereign projects in Bangladesh related to transport"
+
+    if st.button("Example AIIB projects related to internet connectivity", use_container_width=True):
+        st.session_state.example_query = "Example AIIB projects related to internet connectivity"
 
 # Handle example query clicks
 if "example_query" in st.session_state:
