@@ -117,11 +117,6 @@ st.subheader("💬 AI Assistant")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat history
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
 # Example questions
 st.markdown("**💡 Try asking:**")
 
@@ -140,6 +135,11 @@ with col2:
 
     if st.button("Example AIIB projects related to internet connectivity", use_container_width=True):
         st.session_state.example_query = "Example AIIB projects related to internet connectivity"
+
+# Display chat history
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
 # Handle example query clicks
 if "example_query" in st.session_state:
