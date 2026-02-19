@@ -1,5 +1,6 @@
 # 🚀 AIIB Projects Search Agent
 This dashboard uses **LLM-Powered** search to answer questions about projects financed by the **Asian Infrastructure Investment Bank (AIIB)**.
+Check out delpoyed link on [Streamlit](https://aiib-projects-agent.streamlit.app/)
 
 ---
 
